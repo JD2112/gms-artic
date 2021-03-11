@@ -168,6 +168,8 @@ process cramToFastq {
     * @output
     */
 
+    tag { sampleName } 
+
     input:
         tuple sampleName, file(cram)
 
@@ -182,3 +184,21 @@ process cramToFastq {
         """
 }
 
+process concatLanes {
+    tag { sampleName }
+
+    publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", mode: 'copy', overwrite: true
+
+    input:
+        tuple (sampleName, path(fw), path(rv))
+
+    output:
+        tuple (sampleName, path("fw_concat.fq.gz"), path("rv_concat.fq.gz"))
+
+    script:
+    file 'fw_concat.fq.gz' from file(Channel.fromPath(${fw}).collectFile())
+    file 'rv_concat.fq.gz' from file(Channel.fromPath(${rv}).collectFile())
+    """
+    #Concat via process flow
+    """
+}

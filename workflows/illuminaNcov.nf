@@ -12,6 +12,7 @@ include {trimPrimerSequences} from '../modules/illumina.nf'
 include {callVariants} from '../modules/illumina.nf'
 include {makeConsensus} from '../modules/illumina.nf' 
 include {cramToFastq} from '../modules/illumina.nf'
+include {concatLanes} from '../modules/illumina.nf'
 
 include {makeQCCSV} from '../modules/qc.nf'
 include {writeQCSummaryCSV} from '../modules/qc.nf'
@@ -111,6 +112,8 @@ workflow sequenceAnalysis {
                        .set { qc }
 
       writeQCSummaryCSV(qc.header.concat(qc.pass).concat(qc.fail).toList())
+
+      concatLanes(ch_filePairs)
 
       collateSamples(qc.pass.map{ it[0] }
                            .join(makeConsensus.out, by: 0)
