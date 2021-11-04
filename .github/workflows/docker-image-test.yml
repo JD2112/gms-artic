@@ -12,7 +12,7 @@ jobs:
     env:
       NXF_ANSI_LOG: false
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: create artifacts dir to save test logs
       run: mkdir artifacts
     - name: install Singularity
