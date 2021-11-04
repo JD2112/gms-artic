@@ -1,10 +1,10 @@
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
-name: testing nanopore run
+name: create docker images
 jobs:
   test:
     name: Run tests
