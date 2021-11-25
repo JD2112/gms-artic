@@ -1,7 +1,11 @@
 on:
   pull_request:
     branches:
-    - master
+    - main
+  push:
+    branches:
+    - main
+  
 name: master Pull Request
 jobs:
   test:
