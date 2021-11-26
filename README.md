@@ -2,7 +2,7 @@
 
 A nextflow pipeline with a GMS touch for running the ARTIC network's fieldbioinformatics tools (https://github.com/artic-network/fieldbioinformatics).
 
-[![master Pull Request](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml/badge.svg)](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml)
+[![Update docker for gms-artic-nanopore](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml/badge.svg)](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml) [![Update docker for gms-artic-illumina](https://github.com/JD2112/gms-artic/actions/workflows/build_docker_image.yml/badge.svg?branch=main)](https://github.com/JD2112/gms-artic/actions/workflows/build_docker_image.yml) 
 ______________
 #### Release tags
 v1.5.0
