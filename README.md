@@ -1,6 +1,7 @@
 # GMS-artic (ncov2019-artic-nf)
 
 A nextflow pipeline with a GMS touch for running the ARTIC network's fieldbioinformatics tools (https://github.com/artic-network/fieldbioinformatics).
+
 [![master Pull Request](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml/badge.svg)](https://github.com/JD2112/gms-artic/actions/workflows/pull_request.yml)
 ______________
 #### Release tags
