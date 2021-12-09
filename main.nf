@@ -130,3 +130,22 @@ workflow {
      
 }
 
+workflow.onComplete {
+
+    c_green = "\033[0;32m";
+    c_purple = "\033[0;35m";
+    c_red = "\033[0;31m";
+    c_reset = "\033[0m";
+
+    if (workflow.success) {
+        log.info "-${c_purple}[gms-artic]${c_green} Pipeline completed successfully${c_reset}-"
+        if (params.cleanup) {
+          log.info "-${c_purple}[gms-artic]${c_green} Cleanup: Working directory cleared from intermediate files generated with current run: '${workflow.workDir}'  ${c_reset}-"
+        }
+    } else { // To be shown requires errorStrategy = 'finish'
+        log.info "-${c_purple}[gms-artic]${c_red} Pipeline completed with errors${c_reset}-"
+        if (params.cleanup) {
+          log.info "-${c_purple}[gms-artic]${c_red} Cleanup: Working directory was not cleared from intermediate files due to pipeline errors. You can re-use them with -resume option.  ${c_reset}-"
+        }
+    }
+}   

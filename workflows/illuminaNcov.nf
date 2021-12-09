@@ -32,10 +32,13 @@ include {bamToCram} from '../modules/out.nf'
 
 include {collateSamples} from '../modules/upload.nf'
 
+include {containerupdate} from '../modules/containerupdate.nf'
 // import subworkflows
 include {Genotyping} from './typing.nf'
 
 workflow prepareReferenceFiles {
+  // Update container
+  containerupdate()
     // Get reference fasta
     if (params.ref) {
       Channel.fromPath(params.ref)
@@ -99,6 +102,7 @@ workflow sequenceAnalysis {
       ch_bedFile
 
     main:
+
       fastqc(ch_filePairs)
 
       readTrimming(ch_filePairs)
